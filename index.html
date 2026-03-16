@@ -1,0 +1,32 @@
+<form id="bookingForm">
+
+<input type="email" id="email" placeholder="Email" required>
+
+<input type="datetime-local" id="time" required>
+
+<button type="submit">Κλείσε Ραντεβού</button>
+
+</form>
+
+<script>
+
+document.getElementById("bookingForm").addEventListener("submit", async function(e){
+
+e.preventDefault()
+
+const email = document.getElementById("email").value
+const time = document.getElementById("time").value
+
+await fetch("http://localhost:3000/book",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({email,time})
+})
+
+alert("Το ραντεβού κλείστηκε")
+
+})
+
+</script>
